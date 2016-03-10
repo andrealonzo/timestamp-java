@@ -7,26 +7,26 @@ package com.aalonzo;
  **/
  
 public class TimeStamp{
-    Long unixDate;
-    String naturalLanguageDate;
+    Long unix;
+    String natural;
     public TimeStamp(){
-        unixDate = null;
-        naturalLanguageDate = null;
+        unix = null;
+        natural = null;
     }
     public TimeStamp(Long unixDate, String naturalLanguageDate){
-        this.unixDate = unixDate;
-        this.naturalLanguageDate = naturalLanguageDate;
+        this.unix = unixDate;
+        this.natural = naturalLanguageDate;
     }
     public void setUnixDate(Long unixDate){
-        this.unixDate = unixDate;
+        this.unix = unixDate;
     }
     public Long getUnixDate(){
-        return unixDate;
+        return unix;
     }
     public void setNaturalLanguageDate(String naturalLanguageDate){
-        this.naturalLanguageDate = naturalLanguageDate;
+        this.natural = naturalLanguageDate;
     }
     public String getNaturalLanguageDate(){
-        return naturalLanguageDate;
+        return natural;
     }
 }

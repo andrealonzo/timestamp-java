@@ -43,10 +43,14 @@ public class TimeStampController {
         
             System.out.println("natural language timestamp entered");
             // input date is in natural language
-            String [] datePatterns = {"MMMM d, yyyy", "MMMM d,yyyy"};
-    
+           // String [] datePatterns = {"MMMM d, yyyy", "MMMM d,yyyy"};
+            
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+            format.setTimeZone(TimeZone.getTimeZone("UTC"));
+                      
             try {
-                date = DateUtils.parseDate(strDate, datePatterns);
+            	date = format.parse(strDate);
+               // date = DateUtils.parseDate(strDate, Locale.ENGLISH, datePatterns);
             }
             catch (ParseException ex) {
                 //input date is invalid
@@ -57,8 +61,12 @@ public class TimeStampController {
         //convert the date to unixTime
         unixDate = date.getTime() / 1000;
         
-        //convert the date to natual language
-        naturalLanguageDate = new SimpleDateFormat("MMMM d, yyyy").format(date.getTime());
+        //convert the date to natural language
+
+        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        
+        naturalLanguageDate = format.format(date.getTime());
         
         return new TimeStamp(unixDate, naturalLanguageDate);
     }
