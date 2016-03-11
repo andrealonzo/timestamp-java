@@ -20,8 +20,8 @@ public class TimeStampServlet extends HttpServlet {
         
         TimeStampController timeStampController = new TimeStampController();
 
-        //grabs the date from the url
-        String encodedStrDate = request.getPathInfo().replace("/", "");
+        //grabs the date from the url and remove leading slash
+        String encodedStrDate = request.getPathInfo().substring(1);
         String strDate = java.net.URLDecoder.decode(encodedStrDate, "UTF-8");
         System.out.println(strDate);
         

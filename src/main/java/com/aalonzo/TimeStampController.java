@@ -1,9 +1,13 @@
 package com.aalonzo;
 
-import org.apache.commons.lang3.*;
-import org.apache.commons.lang3.time.*;
-import java.util.*;
-import java.text.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import org.apache.commons.lang3.math.NumberUtils;
 
 
 /**
@@ -26,7 +30,7 @@ public class TimeStampController {
         }
         
         //if the date is all numbers, then it's a unix timestamp
-        if (StringUtils.isNumeric(strDate)) {
+        if (NumberUtils.isNumber(strDate)) {
             System.out.println("unix timestamp entered");
             
             //unix timestamp

@@ -36,6 +36,26 @@ public class TimeStampServletTest {
         
         assertTrue(stringWriter.toString().equals(expectedOutput)); 
 	}
+	@Test
+	public void testNegativeUnixDate() throws ServletException, IOException {
+		String unixDate = "-601084800";
+		String expectedOutput = "{\"unixDate\":-601084800,\"naturalLanguageDate\":\"December 15, 1950\"}\n";
+
+		//create mock objects
+		HttpServletResponse response = mock(HttpServletResponse.class);
+		HttpServletRequest request = mock(HttpServletRequest.class);
+
+		when(request.getPathInfo()).thenReturn("/" + unixDate);
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter writer = new PrintWriter(stringWriter);
+		
+        when(response.getWriter()).thenReturn(writer);
+        
+        //call servlet with mock objects
+        new TimeStampServlet().doGet(request, response);
+        
+        assertTrue(stringWriter.toString().equals(expectedOutput)); 
+	}
 
 	@Test
 	public void testNaturalLanguageDate() throws ServletException, IOException {
@@ -57,5 +77,8 @@ public class TimeStampServletTest {
         
         assertTrue(stringWriter.toString().equals(expectedOutput)); 
 	}
+	
+	
+	
 
 }
