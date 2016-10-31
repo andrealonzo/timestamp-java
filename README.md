@@ -19,6 +19,8 @@ Run the following command to build the project
 Run the following command to start the server 
 
     $ mvn jetty:run
+    
+Go to http://localhost:8080 to see the app running
 
 ## Features
 
